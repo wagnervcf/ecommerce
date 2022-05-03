@@ -5,7 +5,7 @@
     $celular = $_POST['celular'];
     $cidade = $_POST['cidade'];
     $data_nascimento = $_POST['data_nascimento'];
-    $sql= "INSERT INTO pessoa(nome,email,celular,cidade,data_nascimento) VALUES ('$nome','$email','$celular','$cidade','$data_nascimento')";
+    $sql= "INSERT INTO tb_pessoas(nome,email,celular,cidade,data_nascimento) VALUES ('$nome','$email','$celular','$cidade','$data_nascimento')";
     if(mysqli_query($conn,$sql)){
         echo "<script language='javascript' type='text/javascript'> 
           alert('Registro inserido com sucesso!');

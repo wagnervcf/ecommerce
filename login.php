@@ -1,17 +1,32 @@
 <?php
-    session_start();
-    include 'conecta.php';
-    $login = $_POST['login'];
-    $senha = $_POST['senha'];
-    $logar = mysqli_query($conn, "SELECT * FROM usuario WHERE login='$login' AND senha='$senha'");
-    if(mysqli_num_rows($logar)>0){
-        $_SESSION["user"] = $_POST['login'];
-        $dados = mysqli_fetch_assoc($logar);
-        header("location:index.php");
+include 'conecta.php';
+
+
+$login = $_POST['login'];
+$senha = $_POST['senha'];
+
+$logar = mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE login='$login' AND senha='$senha'");
+$num = mysqli_num_rows($logar);
+       
+
+if ($num == 1) {
+    while ($percorrer = mysqli_fetch_array($logar)){
+        $inadmin = $percorrer['inadmin'];
+        
+        session_start();
+
+        if ($inadmin == 1) {
+            $_SESSION['inadmin'] = $inadmin;
+            
+            header('Location: dash.php');
+        } else {
+            $_SESSION['nor'];
+            header('Location: index.php');
+        }
     }
-    else {
-        echo "<script>alert('Login ou senha incorreto!');</script>";
-        echo "<script>window.location.replace('index.php');</script>";
-    }
-    mysqli_close($conn);
+} else {
+    echo ("<script>alert('Login ou senha incorreto! Tente novamente!');</script>");
+    echo ("<script>window.location.replace('index.php');</script>");
+}
+mysqli_close($conn);
 ?>

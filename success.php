@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>ecommerce</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.reflowhq.com/v1/toolkit.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
@@ -18,12 +17,12 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-lg navigation-clean-search">
-        <div class="container"><a class="navbar-brand" href="index.php">loja online</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="index.php" data-bs-target="index.php">loja online</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="paginaproduto.php">Produtos</a></li>
                     <li class="nav-item"><a class="nav-link" href="contato.php">contato</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="carrinho.php">carrinho</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrinho.php">carrinho</a></li>
                 </ul>
                 <form class="me-auto search-form" target="_self">
                     <div class="d-flex align-items-center"><label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
@@ -32,7 +31,8 @@
         </div>
     </nav>
     <div class="container">
-        <div data-reflow-type="shopping-cart" data-reflow-success-url="/success.php" data-reflow-cancel-url="/cancel.php"></div>
+        <h1 style="margin-bottom: 25px;margin-top: 40px;">obrigado pela compra!</h1>
+        <p>Taciti placerat nisl ligula primis. Inceptos neque pellentesque, congue gravida ultricies metus. Cubilia mauris non, cras diam ultricies habitant curabitur elit nec. Litora ullamcorper viverra, per potenti adipiscing risus quisque.</p>
     </div>
     <footer class="footer-basic">
         <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
@@ -46,7 +46,6 @@
         <p class="copyright">Company Name © 2022</p>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.reflowhq.com/v1/toolkit.min.js" data-reflow-store="267418190"></script>
     <script src="assets/js/bs-init.js"></script>
 </body>
 
