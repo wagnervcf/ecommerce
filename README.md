@@ -1,2 +1,2 @@
 # tccsenaictm
-Trabalho de Conclusão de Curso em desenvolvimento.
+Trabalho de conclusão de curso "TCC" - Senai CTM - Turma TDS05.
