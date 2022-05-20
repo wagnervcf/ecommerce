@@ -33,7 +33,9 @@
     </nav>
     <div class="container">
         <h1 style="margin-bottom: 25px;margin-top: 30px;">Produtos</h1>
-        <div data-reflow-type="product-list" data-reflow-layout="cards" data-reflow-order="date_desc" data-reflow-product-link="/product.php?product={id}"></div>
+        <div data-reflow-type="product-list" data-reflow-layout="cards" data-reflow-order="date_desc">
+        
+        </div>
         <footer class="footer-basic">
             <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">

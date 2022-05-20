@@ -1,5 +1,10 @@
 <?php
     session_start();
+    if(isset($_SESSION['inadmin'])){
+        
+    }else{
+        header('Location: index.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,6 +31,7 @@
                     <li class="nav-item"><a class="nav-link" href="paginaproduto.php">Produtos</a></li>
                     <li class="nav-item"><a class="nav-link" href="contato.php">contato</a></li>
                     <li class="nav-item"><a class="nav-link" href="carrinho.php">carrinho</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sair.php">sair</a></li>
                 </ul>
                 <form class="me-auto search-form" target="_self">
                     <div class="d-flex align-items-center"><label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>

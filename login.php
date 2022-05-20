@@ -13,14 +13,15 @@ if ($num == 1) {
     while ($percorrer = mysqli_fetch_array($logar)){
         $inadmin = $percorrer['inadmin'];
         
+        
         session_start();
 
         if ($inadmin == 1) {
             $_SESSION['inadmin'] = $inadmin;
             
-            header('Location: dash.php');
+            header('Location: admin/index.php');
         } else {
-            $_SESSION['nor'];
+            $_SESSION['normal'] = $percorrer['idusuario'];
             header('Location: index.php');
         }
     }

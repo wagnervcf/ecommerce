@@ -37,7 +37,7 @@
                 <div class="mb-3"><input class="form-control" type="text" name="login" placeholder="Login"></div>
                 <div class="mb-3"><input class="form-control is-invalid" type="password" name="senha" placeholder="Senha"></div>
                 <div class="mb-3"></div>
-                <div class="mb-3"><button class="btn btn-primary" type="submit">entrar</button><a class="btn btn-link justify-content-end" role="button" href="cadastro.php">cadastrar</a></div>
+                <div class="mb-3"><button class="btn btn-primary" type="submit">entrar</button><a class="btn btn-link justify-content-end" role="button" href="cadastrar.php">cadastrar</a></div>
             </form>
         </section>
     </div>

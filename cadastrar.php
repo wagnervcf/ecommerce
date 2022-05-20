@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -31,15 +31,27 @@
         </div>
     </nav>
     <div class="container">
-        <section class="contact-clean">
-            <form method="post">
-                <h2 class="text-center">cadastrar</h2>
-                <div class="mb-3"><input class="form-control" type="text" name="login" placeholder="Login"></div>
-                <div class="mb-3"><input class="form-control is-invalid" type="email" name="senha" placeholder="Senha"></div>
-                <div class="mb-3"></div>
-                <div class="mb-3"><button class="btn btn-primary" type="submit">entrar</button><a class="btn btn-link active justify-content-end" role="button" href="cadastrar.php">cadastrar</a></div>
-            </form>
-        </section>
+    <section class="contact-clean">
+        <form action="cad.php" method="POST">
+        <h2 class="text-center">Dados Cadastrais</h2>
+        <label>Nome</label>
+                <input type="text" class="form-control" name="nome" placeholder="Insira o nome" required/>
+                <br/>
+                <label>E-mail</label>
+                <input type="email" class="form-control" name="email" placeholder="Insira o e-mail" required/>
+                <br/>
+                <label>Celular</label>
+                <input type="number" class="form-control" name="celular" placeholder="Insira o celular" required/>
+                <br/>
+                <label>Cidade</label>
+                <input type="text" class="form-control" name="cidade" placeholder="Insira a cidade" required/>
+                <br/>
+                <label>Data de Nascimento</label>
+                <input type="date" class="form-control" name="data_nascimento" placeholder="Insira a data de nascimento" required/>
+                <br/>
+                <button type="submit" class="btn btn-primary">Inserir</button>
+        </form>
+    </section>
     </div>
     <footer class="footer-basic">
         <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>

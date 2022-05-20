@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Maio-2022 às 23:18
+-- Tempo de geração: 19-Maio-2022 às 23:56
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `db_loja`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_arquivos`
+--
+
+CREATE TABLE `tb_arquivos` (
+  `idarquivo` int(11) NOT NULL,
+  `nome_arquivo` varchar(100) NOT NULL,
+  `path` varchar(100) NOT NULL,
+  `data_upload` datetime NOT NULL DEFAULT current_timestamp(),
+  `id_produtos` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `tb_arquivos`
+--
+
+INSERT INTO `tb_arquivos` (`idarquivo`, `nome_arquivo`, `path`, `data_upload`, `id_produtos`) VALUES
+(1, 'camisetaadidas.png', 'assets/imagens/6286a29292d62.png', '2022-05-19 17:03:30', 15),
+(2, 'tenis.png', 'assets/imagens/6286a6876d243.png', '2022-05-19 17:20:23', 16),
+(3, 'tenispreto.png', 'assets/imagens/6286a6f6eb43e.png', '2022-05-19 17:22:14', 17),
+(4, 'blusaadidas.png', 'assets/imagens/6286a7e4c65f1.png', '2022-05-19 17:26:12', 18);
 
 -- --------------------------------------------------------
 
@@ -111,7 +135,6 @@ INSERT INTO `tb_pessoas` (`idpessoa`, `nome`, `email`, `celular`, `cidade`, `dat
 (1, 'Wagner', 'wagner@pr.gov.br', '449889567', 'Maringá', '2021-10-05'),
 (2, 'Alisson', 'alisson@pr.gov.br', '449884325', 'Maringá', '2021-05-10');
 
-
 -- --------------------------------------------------------
 
 --
@@ -120,9 +143,31 @@ INSERT INTO `tb_pessoas` (`idpessoa`, `nome`, `email`, `celular`, `cidade`, `dat
 
 CREATE TABLE `tb_produtos` (
   `idprodutos` int(11) NOT NULL,
-  `produto` varchar(45) DEFAULT NULL,
+  `nome` varchar(100) DEFAULT NULL,
+  `descricao` varchar(100) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
   `valor` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `tb_produtos`
+--
+
+INSERT INTO `tb_produtos` (`idprodutos`, `nome`, `descricao`, `quantidade`, `valor`) VALUES
+(4, 'pao de queijo', 'tenis branco ', 12, '400'),
+(5, 'pao de queijo', 'tenis branco ', 2, '400'),
+(6, 'pao de queijo', 'tenis branco ', 2, '400'),
+(7, 'pao de queijo', 'tenis branco ', 2, '400'),
+(8, 'pao de queijo', 'tenis branco ', 2, '400'),
+(10, 'pao de queijo', 'tenis branco ', 2, '400'),
+(11, 'pao de queijo', 'tenis branco ', 2, '400'),
+(12, 'camiseta', 'camiseta azul adidas', 0, '2'),
+(13, 'camiseta', 'camiseta azul adidas', 0, '2'),
+(14, 'pao de queijo', 'tenis branco ', 0, '12'),
+(15, 'camiseta', 'camiseta azul adidas', 0, '2'),
+(16, 'Tenis Adidas', 'tenis branco ', 0, '5'),
+(17, 'Tenis Adidas Run', 'Tenis adidas preto', 2, '400'),
+(18, 'Blusa Moletom Adidas', 'Blusa Preta Adidas ', 5, '199,90');
 
 -- --------------------------------------------------------
 
@@ -171,6 +216,12 @@ INSERT INTO `tb_usuarios` (`idusuario`, `login`, `senha`, `inadmin`, `tb_pessoas
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `tb_arquivos`
+--
+ALTER TABLE `tb_arquivos`
+  ADD PRIMARY KEY (`idarquivo`);
 
 --
 -- Índices para tabela `tb_carrinho`
@@ -245,6 +296,12 @@ ALTER TABLE `tb_usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `tb_arquivos`
+--
+ALTER TABLE `tb_arquivos`
+  MODIFY `idarquivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de tabela `tb_carrinho`
 --
 ALTER TABLE `tb_carrinho`
@@ -284,7 +341,7 @@ ALTER TABLE `tb_pessoas`
 -- AUTO_INCREMENT de tabela `tb_produtos`
 --
 ALTER TABLE `tb_produtos`
-  MODIFY `idprodutos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idprodutos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `tb_status`
