@@ -31,27 +31,27 @@
         </div>
     </nav>
     <div class="container">
-    <section class="contact-clean">
-        <form action="cad.php" method="POST">
+        <section class="contact-clean">
+        <form action="cadusuario.php" method="POST">
         <h2 class="text-center">Dados Cadastrais</h2>
         <label>Nome</label>
                 <input type="text" class="form-control" name="nome" placeholder="Insira o nome" required/>
                 <br/>
-                <label>E-mail</label>
-                <input type="email" class="form-control" name="email" placeholder="Insira o e-mail" required/>
-                <br/>
-                <label>Celular</label>
-                <input type="number" class="form-control" name="celular" placeholder="Insira o celular" required/>
-                <br/>
-                <label>Cidade</label>
-                <input type="text" class="form-control" name="cidade" placeholder="Insira a cidade" required/>
-                <br/>
                 <label>Data de Nascimento</label>
-                <input type="date" class="form-control" name="data_nascimento" placeholder="Insira a data de nascimento" required/>
+                <input type="date" class="form-control" name="data_nascimento" required/>
+                <br>
+                <label>Telefone</label>
+                <input type="text" class="form-control" name="telefone" placeholder="Insira o telefone" required/>
+                 <br/>
+                <label>Login</label>
+                <input type="text" class="form-control" name="login" required/>
                 <br/>
-                <button type="submit" class="btn btn-primary">Inserir</button>
+                <label>Senha</label>
+                <input type="password" class="form-control" name="senha"  required/>
+                <br/>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
-    </section>
+        </section>
     </div>
     <footer class="footer-basic">
         <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>

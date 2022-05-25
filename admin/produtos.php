@@ -108,7 +108,7 @@
                             echo '<td>'.$registro['quantidade'].'</td>';
                             echo '<td>'.$registro['valor'].'</td>';
                             echo '<td><img src='.$imagem.' width="50" height="50"></td>';
-                            echo '<td><a href="editaprod.php?idprodutos='.$registro['idprodutos'].'">Editar</a> | <a href="excluiprod.php?idprodutos='.$registro['idprodutos'].'">Excluir</a></td>';
+                            echo '<td><a href="editaprod.php?idprodutos='.$registro['idprodutos'].'" class="btn btn-primary action-button" role="button" > Editar</a>  <a href="excluiprod.php?idprodutos='.$registro['idprodutos'].'" class="btn btn-danger action-button" role="button" >Excluir</a></td>';
                             echo '</tr>';
                         }
                         echo "</tbody>";

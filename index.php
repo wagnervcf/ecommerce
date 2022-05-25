@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/Carousel-Hero.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -34,6 +35,41 @@
             </div>    
         </div>
     </nav>
+    <div class="container">
+        <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="bg-light border rounded border-light hero-nature carousel-hero jumbotron py-5 px-4">
+                        <h1 class="hero-title">Nike</h1>
+                        <p class="hero-subtitle">E é claro que a Loja Online, por ser uma revendedora Nike oficial, não ia deixar de trazer os melhores produtos da nossa grande Nike para você! Aqui você encontra as peças mais estilosas de roupas Nike além de uma variedade de tênis.</p>
+                        <p><a class="btn btn-light action-button" role="button" href="#">Saiba Mais</a></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="bg-light border rounded border-light hero-photography carousel-hero jumbotron py-5 px-4">
+                        <h1 class="hero-title">Vans</h1>
+                        <p class="hero-subtitle">E é claro que a Loja Online, por ser uma revendedora Vans oficial, não ia deixar de trazer os melhores produtos da nossa grande Vans para você! Aqui você encontra as peças mais estilosas de roupas Vans além de uma variedade de tênis.</p>
+                        <p><a class="btn btn-light action-button" role="button" href="#">Saiba Mais</a></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="bg-light border rounded border-light hero-technology carousel-hero jumbotron py-5 px-4">
+                        <h1 class="hero-title">Adidas</h1>
+                        <p class="hero-subtitle">E é claro que a Loja Online, por ser uma revendedora Adidas oficial, não ia deixar de trazer os melhores produtos da nossa grande Adidas para você! Aqui você encontra as peças mais estilosas de roupas Adidas além de uma variedade de tênis.</p>
+                        <p><a class="btn btn-light action-button" role="button" href="#">Saiba Mais</a></p>
+                    </div>
+                </div>
+            </div>
+            <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+                <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+            </ol>
+        </div>
+    </div>
+    </div>
+
     <footer class="footer-basic">
         <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Maio-2022 às 23:56
+-- Tempo de geração: 23-Maio-2022 às 22:44
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -43,7 +43,8 @@ INSERT INTO `tb_arquivos` (`idarquivo`, `nome_arquivo`, `path`, `data_upload`, `
 (1, 'camisetaadidas.png', 'assets/imagens/6286a29292d62.png', '2022-05-19 17:03:30', 15),
 (2, 'tenis.png', 'assets/imagens/6286a6876d243.png', '2022-05-19 17:20:23', 16),
 (3, 'tenispreto.png', 'assets/imagens/6286a6f6eb43e.png', '2022-05-19 17:22:14', 17),
-(4, 'blusaadidas.png', 'assets/imagens/6286a7e4c65f1.png', '2022-05-19 17:26:12', 18);
+(4, 'blusaadidas.png', 'assets/imagens/6286a7e4c65f1.png', '2022-05-19 17:26:12', 18),
+(5, 'camisetarosa.png', 'assets/imagens/628a92f337a4d.png', '2022-05-22 16:45:55', 19);
 
 -- --------------------------------------------------------
 
@@ -120,20 +121,20 @@ CREATE TABLE `tb_pagamentos` (
 
 CREATE TABLE `tb_pessoas` (
   `idpessoa` int(11) NOT NULL,
-  `nome` varchar(90) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `celular` varchar(20) NOT NULL,
-  `cidade` varchar(85) NOT NULL,
-  `data_nascimento` date NOT NULL
+  `nome` varchar(65) DEFAULT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tb_pessoas`
 --
 
-INSERT INTO `tb_pessoas` (`idpessoa`, `nome`, `email`, `celular`, `cidade`, `data_nascimento`) VALUES
-(1, 'Wagner', 'wagner@pr.gov.br', '449889567', 'Maringá', '2021-10-05'),
-(2, 'Alisson', 'alisson@pr.gov.br', '449884325', 'Maringá', '2021-05-10');
+INSERT INTO `tb_pessoas` (`idpessoa`, `nome`, `data_nascimento`, `telefone`) VALUES
+(1, 'admin', '1994-05-24', '44997327877'),
+(2, 'usuario', '1992-03-05', '4499739955'),
+(3, 'marcos', '2006-02-16', '44-9999999'),
+(4, 'Natan', '1994-05-05', '44-999999999');
 
 -- --------------------------------------------------------
 
@@ -164,10 +165,11 @@ INSERT INTO `tb_produtos` (`idprodutos`, `nome`, `descricao`, `quantidade`, `val
 (12, 'camiseta', 'camiseta azul adidas', 0, '2'),
 (13, 'camiseta', 'camiseta azul adidas', 0, '2'),
 (14, 'pao de queijo', 'tenis branco ', 0, '12'),
-(15, 'camiseta', 'camiseta azul adidas', 0, '2'),
-(16, 'Tenis Adidas', 'tenis branco ', 0, '5'),
-(17, 'Tenis Adidas Run', 'Tenis adidas preto', 2, '400'),
-(18, 'Blusa Moletom Adidas', 'Blusa Preta Adidas ', 5, '199,90');
+(15, 'Camiseta Adidas Run', 'Camiseta Azul adidas Corrida', 2, '89,90'),
+(16, 'Tenis Adidas Superstar', 'tenis branco adidas', 6, '400'),
+(17, 'Tenis Adidas Run', 'Tenis adidas preto Corrida', 10, '400'),
+(18, 'Blusa Moletom Adidas', 'Blusa Preta Adidas ', 5, '199,90'),
+(19, 'Camiseta Rosa Adidas', 'Camise Rosa da Adidas', 5, '89,90');
 
 -- --------------------------------------------------------
 
@@ -211,7 +213,9 @@ CREATE TABLE `tb_usuarios` (
 
 INSERT INTO `tb_usuarios` (`idusuario`, `login`, `senha`, `inadmin`, `tb_pessoas_idpessoa`) VALUES
 (2, 'admin', '1234', 1, 1),
-(3, 'usuario', '1234', 0, 2);
+(3, 'usuario', '1234', 0, 2),
+(5, '', 'MTIzNA==', 0, 3),
+(6, 'natan', 'MTIzNA==', 0, 4);
 
 --
 -- Índices para tabelas despejadas
@@ -299,7 +303,7 @@ ALTER TABLE `tb_usuarios`
 -- AUTO_INCREMENT de tabela `tb_arquivos`
 --
 ALTER TABLE `tb_arquivos`
-  MODIFY `idarquivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idarquivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `tb_carrinho`
@@ -335,13 +339,13 @@ ALTER TABLE `tb_pagamentos`
 -- AUTO_INCREMENT de tabela `tb_pessoas`
 --
 ALTER TABLE `tb_pessoas`
-  MODIFY `idpessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idpessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `tb_produtos`
 --
 ALTER TABLE `tb_produtos`
-  MODIFY `idprodutos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idprodutos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `tb_status`
@@ -353,7 +357,7 @@ ALTER TABLE `tb_status`
 -- AUTO_INCREMENT de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para despejos de tabelas

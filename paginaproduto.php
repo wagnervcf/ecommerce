@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -32,8 +32,32 @@
         </div>
     </nav>
     <div class="container">
-        <h1 style="margin-bottom: 25px;margin-top: 30px;">Produtos</h1>
-        <div data-reflow-type="product-list" data-reflow-layout="cards" data-reflow-order="date_desc">
+        <h1 style="margin-bottom: 50px;margin-top: 30px;">Produtos</h1>
+        <div class="containerimg"> 
+            <div class="img"><?php   include 'conecta.php';
+                    $pesquisa = mysqli_query($conn, "select tb_produtos.*, tb_arquivos.* from tb_produtos,tb_arquivos where tb_produtos.idprodutos = tb_arquivos.id_produtos");
+                    $row = mysqli_num_rows($pesquisa);
+                    if($row > 0){
+                        while($registro = $pesquisa->fetch_array()){
+                            $imagem = $registro['path'];
+                            echo '<tr>';
+                            echo '<td><img src="admin/'.$imagem.'"></td><br><br>';
+                            echo '<td>Nome: '.$registro['nome'].'</td><br><br>';
+                            echo '<td>Descrição: '.$registro['descricao'].'</td><br><br>';
+                            echo '<td>Valor: '.$registro['valor'].'</td><br><br>';
+                            echo '<td><a href="editaprod.php?idprodutos='.$registro['idprodutos'].'" class="btn btn-primary action-button" role="button" > Adicionar ao carrinho</a></td><br><br>';
+                            echo '</tr>';
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                    } else {
+                        echo "Não há registros!";
+                        echo "</tbody>";
+                        echo "</table>";
+                    }
+                ?> 
+            </div>    
+        </div>
         
         </div>
         <footer class="footer-basic">

@@ -20,21 +20,6 @@ if (isset($_SESSION['inadmin'])) {
 </head>
 
 <body id="page-top">
-   <?php
-    include 'conecta.php';
-    $id = $_GET['idprodutos'];
-    $sql = "SELECT * FROM tb_produtos WHERE idprodutos=$id";
-    $query = $conn->query($sql);
-    while ($dados = $query->fetch_assoc()) {
-        $id = ['idprodutos'];
-        $descricao = $dados['descricao'];
-        $quantidade = $dados['quantidade'];
-        $valor = $dados['valor'];
-        $nome = $dados['nome'];
-    }
-    ?>
-
-
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="index.php">
@@ -55,6 +40,9 @@ if (isset($_SESSION['inadmin'])) {
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                        </form>
                         <ul class="navbar-nav flex-nowrap ms-auto">
                             <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
                                 <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
@@ -79,86 +67,52 @@ if (isset($_SESSION['inadmin'])) {
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4">Editar Produto</h3>
-                    <div class="row mb-3">
+                <?php
+    include 'conecta.php';
+    $id = $_GET['idprodutos'];
+    $sql = "SELECT * FROM tb_produtos WHERE idprodutos=$id";
+    $query = $conn->query($sql);
+    while ($dados = $query->fetch_assoc()) {
+        $id = $dados['idprodutos'];
+        $nome = $dados['nome'];
+        $descricao = $dados['descricao'];
+        $quantidade = $dados['quantidade'];
+        $valor = $dados['valor'];
+    }
+    ?>
 
-                        <div class="col-lg-8">
-                            <div class="row mb-3 d-none">
-                                <div class="col">
-                                    <div class="card textwhite bg-primary text-white shadow">
-                                        <div class="card-body">
-                                            <div class="row mb-2">
-                                                <div class="col">
-                                                    <p class="m-0">Peformance</p>
-                                                    <p class="m-0"><strong>65.2%</strong></p>
-                                                </div>
-                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                            </div>
-                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card textwhite bg-success text-white shadow">
-                                        <div class="card-body">
-                                            <div class="row mb-2">
-                                                <div class="col">
-                                                    <p class="m-0">Peformance</p>
-                                                    <p class="m-0"><strong>65.2%</strong></p>
-                                                </div>
-                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                            </div>
-                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="card shadow mb-3">
-                                        <div class="card-header py-3">
-                                            <p class="text-primary m-0 fw-bold">Produto</p>
-                                        </div>
-                                        <div class="card-body">
-                                        <form action="editarprod.php?idprodutos=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
+    <form action="editarprod.php?idprodutos=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
         <div class="row">
 
             <div class="col">
-                <div class="mb-3"><label class="form-label" for="descricao"><strong>Descrição</strong></label>
-                    <input class="form-control" type="text" placeholder="Descrição do produto" name="descricao" value="<?php echo $descricao; ?>">
+                <div class="mb-3"><label class="form-label" for="descricao"><strong>Nome</strong></label>
+                    <input class="form-control" type="text" placeholder="Descrição do produto" name="nome" value="<?php echo $nome; ?>">
                 </div>
             </div>
             <div class="col">
-                <div class="mb-3"><label class="form-label" for="quantidade"><strong>Quantidade</strong></label>
-                    <input class="form-control" type="text" placeholder="Quantidade do produto" name="quantidade" value="<?php echo $quantidade; ?>">
+                <div class="mb-3"><label class="form-label" for="quantidade"><strong>Descrição</strong></label>
+                    <input class="form-control" type="text" placeholder="Quantidade do produto" name="descricao" value="<?php echo $descricao; ?>">
                 </div>
             </div>
 
         </div>
         <div class="row">
             <div class="col">
-                <div class="mb-3"><label class="form-label" for="valor"><strong>Valor</strong></label>
-                    <input class="form-control" type="text" placeholder="Valor" name="valor" value="<?php echo $valor; ?>">
+                <div class="mb-3"><label class="form-label" for="valor"><strong>Quantidade</strong></label>
+                    <input class="form-control" type="text" placeholder="Valor" name="quantidade" value="<?php echo $quantidade; ?>">
                 </div>
             </div>
             <div class="col">
-                <div class="mb-3"><label class="form-label" for="produto"><strong>Nome do Produto</strong></label>
-                    <input class="form-control" type="text" placeholder="Produto" name="nome" value="<?php echo $nome; ?>">
+                <div class="mb-3"><label class="form-label" for="produto"><strong>Valor</strong></label>
+                    <input class="form-control" type="text" placeholder="Produto" name="valor" value="<?php echo $valor; ?>">
                 </div>
 
             </div>
         </div>
 
-        <div class="mb-3">
-        <a href=""><button class="btn btn-primary btn-sm" type="button">Atualizar</button></div>
-        <div class="mb-3"><a href="index.php"><button type="button" class="btn btn-primary btn-sm">Voltar</button></a></div>
+        <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Atualizar</button></div>
+        <div class="mb-3"><a href="produtos.php"><button type="button" class="btn btn-primary btn-sm">Voltar</button></a></div>
     </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <footer class="bg-white sticky-footer">

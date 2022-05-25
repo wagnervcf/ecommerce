@@ -117,7 +117,7 @@ if (isset($_SESSION['inadmin'])) {
                                                     </div>
                                                     <div class="col">
                                                         <div class="mb-3"><label class="form-label" for="descricao"><strong>Descrição</strong></label>
-                                                        <input class="form-control" type="text" placeholder="Descrição"  name="descricao"></div>
+                                                        <input class="form-control" type="text"  name="descricao"></div>
                                                     </div>
                                                   
                                                 </div>

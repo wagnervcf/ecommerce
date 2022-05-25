@@ -1,9 +1,11 @@
 <?php
 
-if (isset($_SESSION['inadmin'])) {
-} else {
-    header('Location: index.php');
-}
+session_start();
+    if(isset($_SESSION['inadmin'])){
+        
+    }else{
+        header('Location: index.php');
+    }
 include 'conecta.php';
 
 $nome = $_POST['nome'];
@@ -12,14 +14,14 @@ $quantidade = $_POST['quantidade'];
 $valor = $_POST['valor'];
 $sql = "INSERT INTO tb_produtos(nome,descricao,quantidade,valor) VALUE ('$nome','$descricao','$quantidade','$valor')";
 if (mysqli_query($conn, $sql)) {
-    echo "<script language='javascript' type='text/javascript'>
-    alert('Registro não foi inserido!');
-    window.location.href='index.php'
+    echo  "<script language='javascript' type='text/javascript'>
+    alert('Produto Inserido com sucesso!');
+    window.location.href='produtos.php'
     </script>";
 } else {
     echo  "<script language='javascript' type='text/javascript'>
     alert('Registro não foi inserido!');
-    window.location.href='index.php'
+    window.location.href='cadastrar.php'
     </script>";
 }
 
