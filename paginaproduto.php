@@ -32,34 +32,28 @@
         </div>
     </nav>
     <div class="container">
-        <h1 style="margin-bottom: 50px;margin-top: 30px;">Produtos</h1>
-        <div class="containerimg"> 
-            <div class="img"><?php   include 'conecta.php';
+    <h1 style="margin-bottom: 50px;margin-top: 30px;">Produtos</h1> 
+        <div class="containerprod">
+                <?php   include 'conecta.php';
                     $pesquisa = mysqli_query($conn, "select tb_produtos.*, tb_arquivos.* from tb_produtos,tb_arquivos where tb_produtos.idprodutos = tb_arquivos.id_produtos");
                     $row = mysqli_num_rows($pesquisa);
                     if($row > 0){
                         while($registro = $pesquisa->fetch_array()){
                             $imagem = $registro['path'];
-                            echo '<tr>';
-                            echo '<td><img src="admin/'.$imagem.'"></td><br><br>';
-                            echo '<td>Nome: '.$registro['nome'].'</td><br><br>';
-                            echo '<td>Descrição: '.$registro['descricao'].'</td><br><br>';
-                            echo '<td>Valor: '.$registro['valor'].'</td><br><br>';
-                            echo '<td><a href="editaprod.php?idprodutos='.$registro['idprodutos'].'" class="btn btn-primary action-button" role="button" > Adicionar ao carrinho</a></td><br><br>';
-                            echo '</tr>';
+                            $id = $registro['idprodutos'];
+                            echo '<div class="prod"><a href="produto.php?idprodutos='.$registro['idprodutos'].'"><tr>';
+                            echo '<div class="img"><td><center><img src="admin/'.$imagem.'"></center></td></div>';
+                            echo '<div class="name"><td><center>Valor: '.$registro['valor'].'</td></a></center></div>';
+                            echo '<div class="btnprod"><td><center><a href="produto.php?idprodutos='.$registro['idprodutos'].'" class="btn btn-primary action-button" role="button" >Comprar</a></td><center></div>';
+                            echo '</tr></div>';
                         }
-                        echo "</tbody>";
-                        echo "</table>";
                     } else {
                         echo "Não há registros!";
-                        echo "</tbody>";
-                        echo "</table>";
                     }
                 ?> 
-            </div>    
+            
         </div>
-        
-        </div>
+  
         <footer class="footer-basic">
             <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">

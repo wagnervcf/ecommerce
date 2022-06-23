@@ -32,7 +32,103 @@
         </div>
     </nav>
     <div class="container">
-        <div data-reflow-type="shopping-cart" data-reflow-success-url="/success.php" data-reflow-cancel-url="/cancel.php"></div>
+    <?php
+	session_start();
+	if(!isset($_SESSION['carrinho'])){
+		$_SESSION['carrinho'] = array();
+	} //adiciona produto 
+
+	if(isset($_GET['acao'])){
+		//ADICIONAR CARRINHO
+		if($_GET['acao'] == 'add'){
+			$id = intval($_GET['idprodutos']);
+			if(!isset($_SESSION['carrinho'][$id])){
+				$_SESSION['carrinho'][$id] = 1;
+			} else {
+				$_SESSION['carrinho'][$id] += 1;
+			}
+		} //REMOVER CARRINHO 
+
+		if($_GET['acao'] == 'remove'){
+			$id = intval($_GET['idprodutos']);
+			if(isset($_SESSION['carrinho'][$id])){
+				unset($_SESSION['carrinho'][$id]);
+			}
+		} //ALTERAR QUANTIDADE
+		if($_GET['acao'] == 'up'){
+			if(is_array($_POST['prod'])){
+				foreach($_POST['prod'] as $id => $qtd){
+						$id  = intval($id);
+						$qtd = intval($qtd);
+						if(!empty($qtd) || $qtd <> 0){
+							$_SESSION['carrinho'][$id] = $qtd;
+						}else{
+							unset($_SESSION['carrinho'][$id]);
+						}
+				}
+			}
+		}
+
+   }
+
+    ?>
+	<table>
+		<caption>Carrinho de Compras</caption>
+		<thead>
+			<tr>
+				<th width="125">Produto</th>
+				<th width="145">Quantidade</th>
+				<th width="125">Preço</th>
+				<th width="125">SubTotal</th>
+				<th width="125">Remover</th>
+			</tr>
+		</thead>
+		<form action="?acao=up" method="post">
+		<tfoot>
+			<tr>
+				<td colspan="5"><input type="submit" value="Atualizar Carrinho" /></td>
+			<tr>
+			<td colspan="5"><a href="index.php">Continuar Comprando</a></td>
+		</tfoot>
+		<tbody>
+     <?php
+        if(count($_SESSION['carrinho']) == 0){
+          echo '
+                <tr>
+					<td colspan="5">Não há produto no carrinho</td>
+				</tr>
+			';
+          } else {
+                require("conecta.php");
+                $total = 0;
+                foreach($_SESSION['carrinho'] as $id => $qtd){
+                    $sql = "SELECT tb_produtos.*, tb_arquivos.* from tb_produtos,tb_arquivos where tb_produtos.idprodutos = tb_arquivos.id_produtos and idprodutos=$id";
+                        $qr    = mysqli_query($conn,$sql);
+                        $ln    = mysqli_fetch_assoc($qr);
+                        $nome  = $ln['nome'];
+                        @$preco = number_format($ln['valor'], 2, ',', '.');
+                        $sub   = number_format($ln['valor'] * $qtd, 2, ',', '.');
+                        $total += $ln['valor'] * $qtd;
+                         echo '
+							<tr>
+								<td>'.$nome.'</td>
+								<td><input type="text" size="3" name="prod['.$id.']" value="'.$qtd.'" /></td>
+								<td>R$ '.$preco.'</td>
+								<td>R$ '.$sub.'</td>
+								<td><a href="?acao=remove&idprodutos='.$id.'">Remove</a></td>
+                            </tr>';
+                }
+                $total = number_format($total, 2, ',', '.');
+                echo '<tr>
+							<td colspan="4">Total</td>
+							<td>R$ '.$total.'</td>
+                    </tr>';
+          }
+                   ?>
+
+         </tbody>
+    </form>
+ </table>
     </div>
     <footer class="footer-basic">
         <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>

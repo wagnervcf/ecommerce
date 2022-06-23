@@ -2,8 +2,8 @@
 include 'conecta.php';
 
 
-$login = $_POST['login'];
-$senha = $_POST['senha'];
+$login =  $_POST['login'];
+$senha =  $_POST['senha'];
 
 $logar = mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE login='$login' AND senha='$senha'");
 $num = mysqli_num_rows($logar);

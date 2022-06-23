@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/produto.css">
 </head>
 
 <body>
@@ -25,17 +25,35 @@
                     <li class="nav-item"><a class="nav-link" href="contato.php">contato</a></li>
                     <li class="nav-item"><a class="nav-link" href="carrinho.php">carrinho</a></li>
                 </ul>
-                <form class="me-auto search-form" target="_self">
+                <form class="me-auto search-form"  target="_self">
                     <div class="d-flex align-items-center"><label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
                 </form><a class="btn btn-light action-button" role="button" href="entrar.php">entrar</a>
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div data-reflow-type="product" data-bss-dynamic-product="" data-bss-dynamic-product-param="product"></div>
-    </div>
+    <div class="containerprod">
+                <?php   include 'conecta.php';
+                     $id = $_GET['idprodutos'];
+                    $pesquisa = mysqli_query($conn, "select tb_produtos.*, tb_arquivos.* from tb_produtos,tb_arquivos where tb_produtos.idprodutos = tb_arquivos.id_produtos and idprodutos=$id");
+                    $row = mysqli_num_rows($pesquisa);
+                    if($row > 0){
+                        while($registro = $pesquisa->fetch_array()){
+                            $imagem = $registro['path'];
+                            $id = $registro['idprodutos'];
+                            echo '<div class="prod"><tr>';
+                            echo '<div class="img2"><td><center><img src="admin/'.$imagem.'"></center></td></div>';
+                            echo '<div class="name"><td><center>Valor: '.$registro['valor'].'</td></center></div>';
+                            echo '<div class="btnprod"><td><center><a href="carrinho.php?acao=add&idprodutos='.$registro['idprodutos'].'" class="btn btn-primary action-button" role="button" >Comprar</a></td><center></div>';
+                            echo '</tr></div>';
+                        }
+                    } else {
+                        echo "Não há registros!";
+                    }
+                ?> 
+            
+        </div>
     <footer class="footer-basic">
-        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+      
         <ul class="list-inline">
             <li class="list-inline-item"><a href="#">Home</a></li>
             <li class="list-inline-item"><a href="#">Services</a></li>
